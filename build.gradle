@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = 'com.test.Adder'
+
+// tag::repositories[]
+repositories {
+    mavenCentral()
+}
+// end::repositories[]
+
+// tag::jar[]
+jar {
+	manifest {
+        attributes 'Main-Class': 'com.test.Adder'
+    }
+    baseName = 'adder'
+    version =  '0.1.0'
+
+}
+// end::jar[]
+
+// tag::dependencies[]
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+dependencies {
+    compile "joda-time:joda-time:2.2"
+    testCompile "junit:junit:4.12"
+}
+
+dependencies {
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.2'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+}
+
+// end::dependencies[]
+
+// tag::wrapper[]
+// end::wrapper[]
